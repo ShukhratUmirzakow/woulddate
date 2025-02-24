@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuxrat's Project</title>
+    <link rel="icon" href="Screenshot 2025-01-19 140701.png">
+    <script src="https://cdn.jsdelivr.net/gh/yesvarg/emoji@main/emoji.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 14px 18px rgba(0,0,0,0.1);
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .smash {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .pass {
+            background-color: #f44336;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .emodziy{
+            width: 30px;
+            height: 30px;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="content">Tanlang<img class="emodziy" src="https://emojicdn.elk.sh/👇" alt="🧑‍💻" width="2px"></h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          replaceEmojisWithImages("#content", 1.6, 0.5);
+        });
+      </script>
+        
+    <img id="face" src="https://100k-faces.glitch.me/random-image" alt="Random Face">
+    <div class="buttons">
+        <button class="smash" onclick="vote('smash')">Gaplashardim</button>
+        <button class="pass" onclick="vote('pass')">Gaplashmasdim</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        let smashCount = 0;
+        let passCount = 0;
+        let totalVotes = 0;
+
+        function vote(choice) {
+            if (choice === 'smash') smashCount++;
+            else passCount++;
+
+            totalVotes++;
+
+            if (totalVotes >= 20) {
+                showResult();
+            } else {
+                document.getElementById('face').src = 'https://100k-faces.glitch.me/random-image?' + new Date().getTime();
+            }
+        }
+
+        function showResult() {
+            let resultText = `Siz 20 tadan ${smashCount} ta yoqdi! `;
+            resultText += smashCount > passCount ? "Didiz o'rtacha!" : "Didiz yaxshi!";
+            document.getElementById('result').innerText = resultText;
+
+            smashCount = 0;
+            passCount = 0;
+            totalVotes = 0;
+        }
+    </script>
+
+    <footer>
+        <p>Created by <a href="https://t.me/iirixlle" target="_blank">Shuxrat</a></p>
+    </footer>
+</body>
+</html>
